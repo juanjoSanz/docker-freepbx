@@ -1,4 +1,4 @@
-FROM tiredofit/debian:buster
+FROM debian:stable-slim
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
 ### Set defaults
@@ -280,8 +280,8 @@ RUN echo "Package: libxml2*" > /etc/apt/preferences.d/libxml2 && \
     update-alternatives --set php /usr/bin/php${PHP_VERSION} && \
     \
 ### Zabbix setup
-    echo '%zabbix ALL=(asterisk) NOPASSWD:/usr/sbin/asterisk' >> /etc/sudoers && \
-    \
+#   echo '%zabbix ALL=(asterisk) NOPASSWD:/usr/sbin/asterisk' >> /etc/sudoers && \
+#    \
 ### Setup for data persistence
     mkdir -p /assets/config/var/lib/ /assets/config/home/ && \
     mv /home/asterisk /assets/config/home/ && \
